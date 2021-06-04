@@ -1,0 +1,2 @@
+# AzureFunction.SetMyPublicIp
+AzureFunction.SetMyPublicIp
