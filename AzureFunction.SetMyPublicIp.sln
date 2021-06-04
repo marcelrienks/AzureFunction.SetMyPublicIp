@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunction.SetMyPublicIp", "AzureFunction.SetMyPublicIp.csproj", "{E21593BE-8C59-4F99-9EA8-D7109FBD3FAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E21593BE-8C59-4F99-9EA8-D7109FBD3FAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E21593BE-8C59-4F99-9EA8-D7109FBD3FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E21593BE-8C59-4F99-9EA8-D7109FBD3FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E21593BE-8C59-4F99-9EA8-D7109FBD3FAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C00E00F1-CA56-41C9-AF09-C2E0D2FC26C2}
+	EndGlobalSection
+EndGlobal
