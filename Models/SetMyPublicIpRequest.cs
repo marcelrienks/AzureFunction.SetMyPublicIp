@@ -2,8 +2,13 @@
 {
     public class SetMyPublicIpRequest
     {
-        public string HostedZoneId { get; set; }
-        public string DomainName { get; set; }
-        public string PublicIps { get; set; }
+        public string Domain { get; set; }
+        public string ClientId { get; set; }
+        public string Secret { get; set; }
+        public string SubscriptionId { get; set; }
+        public string PublicIpAddress { get; set; }
+        public string ResourceGroupName { get; set; }
+        public string ZoneName { get; set; }
+        public string RecordSetName { get; set; }
     }
 }
