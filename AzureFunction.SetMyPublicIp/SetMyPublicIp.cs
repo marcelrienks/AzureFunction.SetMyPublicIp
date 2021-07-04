@@ -34,51 +34,43 @@ namespace AzureFunction.SetMyPublicIp
             try
             {
                 // Get request
-                var request = JsonConvert.DeserializeObject<SetMyPublicIpRequest>(await new StreamReader(req.Body).ReadToEndAsync());
+                var setMyPublicIpRequest = JsonConvert.DeserializeObject<SetMyPublicIpRequest>(await new StreamReader(req.Body).ReadToEndAsync());
 
-                // Validate and Set an 'A' recordset
-                ValidateRequest(request);
-                var recordSet = await SetRecordSet(request);
+                ValidateSetMyPublicIpRequest(setMyPublicIpRequest);
+
+                var recordSet = await SetRecordSet(setMyPublicIpRequest);
 
                 return new OkObjectResult(recordSet);
             }
             catch (Exception ex)
             {
-                _log.LogInformation($"SetMyPublicIp: Exception: {ex.Message}, Stacktrace: {ex.StackTrace}");
+                _log.LogCritical($"SetMyPublicIp: Exception: {ex.Message}, Stacktrace: {ex.StackTrace}");
                 throw;
             }
         }
 
         /// <summary>
-        /// Validates that all required arguments are present. HttpMethod, QueryStringParamater, and Headers
+        /// Validates all properties of the extended request object, throwing an <c>ArgumentException</c> exception of not present, else logging the value if it is.
         /// </summary>
-        /// <param name="request">the request from the API Gateway</param>
-        /// <returns></returns>
-        private static void ValidateRequest(SetMyPublicIpRequest request)
+        public static void ValidateSetMyPublicIpRequest(SetMyPublicIpRequest setMyPublicIpRequest)
         {
-            _log.LogInformation("SetMyPublicIp: Validate SetMyPublicIpRequest...");
+            if (setMyPublicIpRequest != null)
+            {
+                _log.LogInformation("SetMyPublicIp: Validate SetMyPublicIpRequest...");
 
-            // Validate that request is not null
-            if (request == null)
-                throw new ArgumentNullException(nameof(request), "The argument cannot be null.");
+                var properties = typeof(SetMyPublicIpRequest).GetProperties();
+                foreach (var property in properties)
+                {
+                    if (string.IsNullOrEmpty(property.GetValue(setMyPublicIpRequest).ToString()))
+                        throw new ArgumentException("Argument cannot be null or empty", property.Name);
 
-            // Validate and get query param 'hostedZoneId' is present
-            if (string.IsNullOrEmpty(request.ZoneName))
-                throw new ArgumentException("No HostedZoneId present.", "request.HostedZoneId");
-
-            _log.LogDebug($"HostedZoneId: {request.ZoneName}");
-
-            // Validate and get query param 'hostedZoneId' is present
-            if (string.IsNullOrEmpty(request.Domain))
-                throw new ArgumentException("No Domain present.", "request.Domain");
-
-            _log.LogDebug($"DomainName: {request.Domain}");
-
-            // Validate and get query param 'hostedZoneId' is present
-            if (string.IsNullOrEmpty(request.PublicIpAddress))
-                throw new ArgumentException("No PublicIps present.", "request.PublicIps");
-
-            _log.LogDebug($"PublicIps: {request.PublicIpAddress}");
+                    _log.LogDebug($"{property.Name}: {property.GetValue(setMyPublicIpRequest)}");
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Argument cannot be null or empty", typeof(SetMyPublicIpRequest).ToString());
+            }
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
-﻿namespace AzureFunction.SetMyPublicIp.Models
+﻿using Microsoft.Extensions.Logging;
+
+namespace AzureFunction.SetMyPublicIp.Models
 {
     public class SetMyPublicIpRequest
     {
