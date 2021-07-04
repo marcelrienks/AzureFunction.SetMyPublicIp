@@ -1,8 +1,8 @@
 # AzureFunction.SetMyPublicIp
 AzureFunction.SetMyPublicIp
 
+[![Build & Test](https://github.com/marcelrienks/AzureFunction.SetMyPublicIp/actions/workflows/dotnetcore.yml/badge.svg)](https://github.com/marcelrienks/AzureFunction.SetMyPublicIp/actions/workflows/dotnetcore.yml)
 
-![Build & Test](https://github.com/marcelrienks/AzureFunction.SetMyPublicIp/workflows/Build%20&%20Test/badge.svg)
 # SetMyPublicIp
 This is a DDNS (Dynamic DNS) solution implemented using Azure.
 
